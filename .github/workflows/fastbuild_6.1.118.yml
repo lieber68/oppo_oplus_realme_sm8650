@@ -81,7 +81,7 @@ on:
         description: '内核后缀(留空默认,开头别加连字符,勿加空格等影响指令运行的保留字符)'
         required: false
         type: string
-        default: 'lieber'
+        default: 'android14-11-o-lieber'
 
 jobs:
   build:
@@ -210,7 +210,7 @@ jobs:
             # 创建版本定义模板&版本格式函数: 使用获取的提交哈希和固定后缀
             # KSU_VERSION_API: API 版本定义
             # KSU_VERSION_FULL: 完整版本定义
-            VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'@cctv18\nendef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'@cctv18'
+            VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'@Lieber\nendef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'@Lieber'
             # 清理内核 Makefile 中的旧版本定义
             # 删除版本函数
             sed -i '/define get_ksu_version_full/,/endef/d' kernel/Makefile
